@@ -24,6 +24,26 @@
                         <span>Profile</span>
                     </a>
                 </li>
+                
+                <!-- menu header -->
+                <li class="menu-header">Recipes</li>
+                <!-- menu item -->
+                <li class="{{ Route::is('recipes.index') ? 'active' : '' }}">
+                    <a href="{{ route('recipes.index') }}">
+                        <i class="fas fa-list"></i>
+                        <span>List Recipes</span>
+                    </a>
+                </li>
+               
+                <!-- menu header -->
+                <li class="menu-header">Tags</li>
+                <!-- menu item -->
+                <li class="{{ Route::is('tags.index') ? 'active' : '' }}">
+                    <a href="{{ route('tags.index') }}">
+                        <i class="fas fa-list"></i>
+                        <span>List Tags</span>
+                    </a>
+                </li>
             </ul>
         </aside>
     </div>
