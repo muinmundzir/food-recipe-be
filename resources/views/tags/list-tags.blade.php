@@ -11,7 +11,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('tags.create') }}" class="btn btn-primary">Add New Tag</a>
+        <a href="{{ route('tags.create') }}" class="btn btn-success">Add New Tag</a>
     </div>
     <div class="card-body p-2">
       <div class="table-responsive">

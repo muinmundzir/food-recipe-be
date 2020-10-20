@@ -26,6 +26,7 @@
             </div>
         </div>
         <div class="card-footer text-right">
+            <a href="{{ url()->previous() }}" class="btn btn-warning" type="button">Back</a>
             <button class="btn btn-primary" type="submit">Add</button>
         </div>
     </form>
