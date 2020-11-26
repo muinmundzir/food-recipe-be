@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::middleware('auth', 'verified')->group(function () {
 	Route::view('dashboard', 'dashboard')->name('dashboard');
 	Route::view('profile', 'profile')->name('profile');
 
-	Route::resource('recipes', RecipeController::class);
-	Route::resource('tags', TagController::class);
+	Route::resource('recipe', RecipeController::class);
+	Route::resource('category', CategoryController::class);
+	Route::resource('tag', TagController::class);
 });

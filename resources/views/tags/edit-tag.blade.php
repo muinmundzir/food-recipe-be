@@ -5,12 +5,12 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h4>Add Tags</h4>
+        <h4>Edit Tags</h4>
     </div>
 </div>
 
 <div class="card">
-    <form action="{{ route('tags.update', $tag->id) }}" method="POST">
+    <form action="{{ route('tag.update', $tag->id) }}" method="POST">
         @csrf
         @method('PATCH')
         <div class="card-body">

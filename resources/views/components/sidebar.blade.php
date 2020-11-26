@@ -28,22 +28,54 @@
                 <!-- menu header -->
                 <li class="menu-header">Recipes</li>
                 <!-- menu item -->
-                <li class="{{ Route::is('recipes.index') ? 'active' : '' }}">
-                    <a href="{{ route('recipes.index') }}">
+                <li class="{{ Route::is('recipe.index') ? 'active' : '' }}">
+                    <a href="{{ route('recipe.index') }}">
                         <i class="fas fa-list"></i>
                         <span>List Recipes</span>
                     </a>
                 </li>
-               
+                @if(Route::is('recipe.create'))
+                <li class="{{ Route::is('recipe.create') ? 'active' : '' }}">
+                    <a href="{{ route('recipe.create') }}">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Recipes</span>
+                    </a>
+                </li>
+                @endif
+                <!-- menu header -->
+                <li class="menu-header">Categories</li>
+                <!-- menu item -->
+                <li class="{{ Route::is('category.index') ? 'active' : '' }}">
+                    <a href="{{ route('category.index') }}">
+                        <i class="fas fa-list"></i>
+                        <span>List Categories</span>
+                    </a>
+                </li>
+                @if(Route::is('category.create'))
+                <li class="{{ Route::is('category.create') ? 'active' : '' }}">
+                    <a href="{{ route('category.create') }}">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Categories</span>
+                    </a>
+                </li>
+                @endif
                 <!-- menu header -->
                 <li class="menu-header">Tags</li>
                 <!-- menu item -->
-                <li class="{{ Route::is('tags.index') ? 'active' : '' }}">
-                    <a href="{{ route('tags.index') }}">
+                <li class="{{ Route::is('tag.index') ? 'active' : '' }}">
+                    <a href="{{ route('tag.index') }}">
                         <i class="fas fa-list"></i>
                         <span>List Tags</span>
                     </a>
                 </li>
+                @if(Route::is('tag.create'))
+                <li class="{{ Route::is('tag.create') ? 'active' : '' }}">
+                    <a href="{{ route('tag.create') }}">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Tags</span>
+                    </a>
+                </li>
+                @endif
             </ul>
         </aside>
     </div>

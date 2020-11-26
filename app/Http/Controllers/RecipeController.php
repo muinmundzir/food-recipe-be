@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
+use App\Models\Tag;
 use App\Models\Recipe;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\RecipeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -14,7 +18,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return view('recipes.list-recipes');
+        $recipes = Recipe::with('category')->get();
+        // dd($recipes);
+        return view('recipes.list-recipes', [
+            'recipes' => $recipes,
+        ]);
     }
 
     /**
@@ -24,7 +32,12 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        $tags = Tag::get();
+        return view('recipes.add-recipe', [
+            'tags' => $tags,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -33,9 +46,33 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecipeRequest $request)
     {
-        //
+        $input = $request->all();
+        $user = Auth::user();
+
+        // image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $ext = $image->getClientOriginalExtension();
+            if ($request->file('image')->isValid()) {
+                $image_name = date('YmdHis') . ".$ext";
+                $upload_path = 'image_uploads';
+                $request->file('image')->move($upload_path, $image_name);
+                $input['image'] = $image_name;
+            }
+        }
+        $recipe = Recipe::create([
+            'name' => $input['name'],
+            'description' => $input['description'],
+            'category_id' => $input['category'],
+            'status' => $input['status'],
+            'image' => $input['image'],
+            'steps' => $input['steps'],
+            'user_id' => $user->id
+        ]);
+
+        return redirect('/recipe');
     }
 
     /**
@@ -57,7 +94,8 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
+        // dd($recipe);
+        return view('recipes.edit-recipe', ['recipe' => $recipe]);
     }
 
     /**
@@ -67,7 +105,7 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(RecipeRequest $request, Recipe $recipe)
     {
         //
     }

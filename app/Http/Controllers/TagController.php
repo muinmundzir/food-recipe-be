@@ -20,10 +20,10 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
-        $tag = Tag::create([
+        Tag::create([
             'name' => $request->name
         ]);
-        return redirect('/tags');
+        return redirect('tags');
     }
 
     public function show(Tag $tag)
@@ -41,12 +41,12 @@ class TagController extends Controller
         $tag->update([
             'name' => $request->name
         ]);
-        return redirect('/tags');
+        return redirect('tags');
     }
 
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        return redirect('/tags');
+        return redirect('tags');
     }
 }

@@ -11,7 +11,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('tags.create') }}" class="btn btn-success">Add New Tag</a>
+        <a href="{{ route('tag.create') }}" class="btn btn-success">Add New Tag</a>
     </div>
     <div class="card-body p-2">
       <div class="table-responsive">
@@ -32,8 +32,8 @@
                     <td>{{ ucwords($tag->name) }}</td>
                     <td>{{ $tag->created_at }}</td>
                     <td>
-                        <form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
-                            <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('tag.destroy', $tag->id) }}" method="POST">
+                            <a href="{{ route('tag.edit', $tag->id) }}" class="btn btn-warning">Edit</a>
                                 @csrf
                                 @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
